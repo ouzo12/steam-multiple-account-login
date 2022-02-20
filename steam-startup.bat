@@ -3,6 +3,7 @@ setlocal enabledelayedexpansion
 set count=0
 set usernames=username1 username2 username3 username4
 cls
+echo Created by AnkerAnd (Thomas Adams) in 2022.
 for /f "tokens=3" %%a in ('reg query "HKCU\Software\Valve\Steam" /v "AutoLoginUser" ^| findstr /ri "REG_SZ"') do echo Current login: '%%a' && echo If chosing the same user steam will just shutdown. You will have to start steam manually.
 for %%0 in (%usernames%) do (
     set /a count=count+1

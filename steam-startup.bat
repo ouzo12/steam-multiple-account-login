@@ -2,6 +2,8 @@
 setlocal enabledelayedexpansion
 set count=0
 set usernames=username1 username2 username3 username4
+cls
+for /f "tokens=3" %%a in ('reg query "HKCU\Software\Valve\Steam" /v "AutoLoginUser" ^| findstr /ri "REG_SZ"') do echo Current login: '%%a' && echo If chosing the same user steam will just shutdown. You will have to start steam manually.
 for %%0 in (%usernames%) do (
     set /a count=count+1
     set choice[!count!]=%%0
@@ -9,8 +11,8 @@ for %%0 in (%usernames%) do (
 
 echo.
 echo What username to use?
-echo *** Warning *** when selecting username your steam will shutdown and try to access with the selecte user.
-echo Press CTRL-C to terminat this job.
+echo *** Warning *** when selecting username your steam will shutdown and try to access steam with the selecte user.
+echo Press CTRL+C to terminat this job.
 echo.
 for /l %%x in (1,1,!count!) do (
     echo [%%x] !choice[%%x]!
